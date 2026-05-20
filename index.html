@@ -1,25 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cocktail API</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <header>
-        <h1>Vorlage für interaktive Medien II</h1>
-
-    </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IM2 Countries</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  </head>
+  <body>
+    <nav>
+      <img src="assets/Logo_Wortmarke.png" alt="" />
+      <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="">Über uns</a></li>
+        <li><a href="" class="Such-Button">Suchen</a></li>
+      </ul>
+    </nav>
     <main>
-        <h2>Main Content</h2>
-        <p>This is the main content of the page.</p>
+      <div class="master">
+        <div class="titel">
+          <h1></h1>
+        </div>
 
+        <div class="karte">
+          <div class="card-titel"><h3>Karte</h3></div>
+          <div id="map"></div>
+        </div>
+        <div class="auto">
+          <div class="card-titel"><h3>Auto</h3></div>
+          <div class="card">
+            <img src="" alt="" />
+            <p><b>Linksverkehr</b></p>
+          </div>
+        </div>
+        <div class="flagge">
+          <div class="card-titel"><h3>Flagge</h3></div>
+          <div class="card"><img src="" alt="" /></div>
+        </div>
+
+        <div class="währung">
+          <div class="card-titel"><h3>Währung</h3></div>
+          <div class="card">
+            <p>1 US-Dollar entspricht</p>
+            <br />
+            <h2>4.917142</h2>
+            <h2>Brasilianischer Real</h2>
+            <br />
+            <div class="spacer"></div>
+            <div class="feld">
+              <input class="input-währung" type="text" name="usd" />
+              <label class="label" for="usd">USD</label>
+            </div>
+            <div class="feld">
+              <input class="input-währung" type="text" name="brl" />
+              <label class="label" for="brl">BRL</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="infos">
+          <div class="card-titel"><h3>Infos</h3></div>
+          <div class="card">
+            <ul>
+              <li>
+                <p><b>Name:</b></p>
+                <p id="name"></p>
+              </li>
+              <li>
+                <p><b>Hauptstadt:</b></p>
+                <p id="hauptstadt"></p>
+              </li>
+              <li>
+                <p><b>Einwohner:</b></p>
+                <p id="einwohner"></p>
+              </li>
+              <li>
+                <p><b>Zeitzone:</b></p>
+                <p id="zeitzone"></p>
+              </li>
+              <li>
+                <p><b>Kennzeichen:</b></p>
+                <p id="kennzeichen"></p>
+              </li>
+              <li>
+                <p><b>Unabhängigkeit:</b></p>
+                <p id="unabhängigkeit"></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </main>
     <footer>
-        <p>This is the footer of the page.</p>
-
+      <a href="" class="Such-Button">Impressum </a>
+      <ul>
+        <li><img src="assets/Instagram-Logo.png" alt="" /></li>
+        <li><img src="assets/Snapchat-Logo.png" alt="" /></li>
+        <li><img src="assets/LinkedIn-Logo.png" alt="" /></li>
+        <li><img src="assets/EMail-Logo.png" alt="" /></li>
+      </ul>
     </footer>
     <script src="js/script.js" type="module"></script>
-</body>
+  </body>
 </html>
