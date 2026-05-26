@@ -29,11 +29,74 @@
   --f-h4: 0.85rem/100% "Montserrat-Bold", sans-serif;
   --f-h5: 0.85rem/100% "Montserrat-Bold", sans-serif;
   --f-nav: 1.2rem/100% "Montserrat-Bold", sans-serif;
+  --f-input: 1.2rem/100% "Montserrat-Bold", sans-serif;
 }
 
 body {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+#home {
+  background-color: var(--Grün);
+  justify-items: center;
+  align-content: center;
+}
+
+#h2Home {
+  color: gray;
+}
+
+.suchleiste {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--weiss);
+  border-radius: 15px;
+  align-items: center;
+  margin-top: var(--ga-large);
+  padding: var(small);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  margin-bottom: var(--ga-large);
+}
+
+.landSuche {
+  border: none;
+  width: 18rem;
+  height: 2.2rem;
+  border-radius: 0.4rem;
+  margin: var(--ga-small);
+  font-size: var(--f-input);
+  padding-left: var(--ga-small);
+  padding-right: var(--ga-small);
+}
+
+button {
+  background-color: var(--Rot);
+  color: var(--weiss);
+  font: var(--f-nav);
+  padding: 0 var(--ga-small) 0 var(--ga-small);
+  margin-right: var(--ga-small);
+  border-radius: 0.4rem;
+  border: none;
+  height: 2.2rem;
+  width: auto;
+  cursor: pointer;
+}
+
+#landSuche1 {
+  background-color: var(--Suche);
+}
+
+#landSuche2 {
+  background-color: var(--Navigation);
+  margin-top: 0;
+  box-shadow: none;
+  margin-bottom: 0;
 }
 
 nav {
@@ -51,6 +114,7 @@ nav {
     list-style: none;
     font-size: 1.2rem;
     margin: var(--ga-small) var(--ga-large);
+    align-items: center;
   }
 
   img {
@@ -82,7 +146,8 @@ a {
 
 .karte {
   grid-area: 2 / 1 / 3 / 5;
-  padding-bottom: var(--ga-large);
+  padding-bottom: calc(2 * var(--ga-large));
+  margin-left: var(--ga-large);
 }
 
 .auto {
@@ -93,6 +158,34 @@ a {
     justify-content: end;
     align-items: center;
     padding: 0;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      width: auto;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    lottie-player {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+
+      width: 50%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 2;
+    }
+
+    .linksverkehr {
+      left: 0;
+      right: auto;
+    }
 
     p {
       background-color: var(--Navigation);
@@ -101,15 +194,21 @@ a {
       padding: var(--ga-small);
       border-radius: 0 0 15px 15px;
       text-align: center;
+      position: absolute;
+      z-index: 3;
     }
   }
 }
 
 .flagge {
   grid-area: 2 / 8 / 3 / 12;
+  margin-right: var(--ga-large);
 
   .card {
     padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     img {
       width: 100%;
       height: 100%;
@@ -117,12 +216,16 @@ a {
       object-position: center;
       border-radius: 15px;
     }
+    .quad {
+      width: auto;
+    }
   }
 }
 
 .währung {
   grid-area: 3 / 1 / 4 / 6;
   width: calc(100% + var(--grid-gap));
+  margin-left: var(--ga-large);
 
   .card {
     display: flex;
@@ -135,6 +238,10 @@ a {
     height: 2.2rem;
     border-radius: 0.25rem;
     margin-bottom: var(--ga-medium);
+    margin-right: var(--ga-medium);
+    font-size: var(--f-input);
+    padding-left: var(--ga-small);
+    padding-right: var(--ga-small);
   }
 
   .spacer {
@@ -147,11 +254,23 @@ a {
   width: calc(var(--grid-gap) + 100%);
   margin-left: calc(var(--grid-gap) * -1);
 
+  .card {
+    margin-right: var(--ga-large);
+  }
+
   ul {
     display: flex;
     flex-direction: column;
-    gap: var(--ga-small);
+    gap: var(--ga-medium);
     list-style: none;
+
+    li {
+      display: flex;
+
+      p {
+        width: 8.5rem;
+      }
+    }
   }
 }
 
@@ -164,6 +283,7 @@ a {
   height: 316px;
   border-radius: 15px;
   padding: var(--ga-medium);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
 
 footer {
@@ -199,4 +319,5 @@ footer {
   height: 316px;
   width: 100%;
   border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }

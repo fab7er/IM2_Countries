@@ -10,14 +10,22 @@
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   </head>
   <body>
     <nav>
-      <img src="assets/Logo_Wortmarke.png" alt="" />
+      <a href="html/home.html"
+        ><img src="assets/Logo_Wortmarke.png" alt=""
+      /></a>
       <ul>
-        <li><a href="">Home</a></li>
+        <li><a href="html/home.html">Home</a></li>
         <li><a href="">Über uns</a></li>
-        <li><a href="" class="Such-Button">Suchen</a></li>
+        <li>
+          <form id="landSuche2" class="suchleiste">
+            <input class="landSuche" type="text" />
+            <button type="submit">Suchen</button>
+          </form>
+        </li>
       </ul>
     </nav>
     <main>
@@ -33,8 +41,10 @@
         <div class="auto">
           <div class="card-titel"><h3>Auto</h3></div>
           <div class="card">
-            <img src="" alt="" />
-            <p><b>Linksverkehr</b></p>
+            <img src="assets/Auto-Strasse.svg" alt="" />
+            <lottie-player src="assets/Flow 1.json" loop autoplay>
+            </lottie-player>
+            <p><b>Verkehr</b></p>
           </div>
         </div>
         <div class="flagge">
@@ -45,19 +55,24 @@
         <div class="währung">
           <div class="card-titel"><h3>Währung</h3></div>
           <div class="card">
-            <p>1 US-Dollar entspricht</p>
+            <p>1 Schweizer Franken entspricht</p>
             <br />
-            <h2>4.917142</h2>
-            <h2>Brasilianischer Real</h2>
+            <h2 id="umrechnung"></h2>
+            <h2 id="waehrungUmrechner"></h2>
             <br />
             <div class="spacer"></div>
             <div class="feld">
-              <input class="input-währung" type="text" name="usd" />
-              <label class="label" for="usd">USD</label>
+              <input id="chf" class="input-währung" type="number" name="usd" />
+              <label class="label" for="usd"><b>CHF</b></label>
             </div>
             <div class="feld">
-              <input class="input-währung" type="text" name="brl" />
-              <label class="label" for="brl">BRL</label>
+              <input
+                id="fremdWaehrung"
+                class="input-währung"
+                type="number"
+                name="brl"
+              />
+              <label class="label" for="brl"><b id="zielWaehrung"></b></label>
             </div>
           </div>
         </div>
