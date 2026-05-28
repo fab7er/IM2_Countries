@@ -22,14 +22,13 @@
   --grid-gap: 1.5rem;
 
   /*schriften*/
-  --f-h1: 5.56rem/100% "Montserrat-Bold", sans-serif;
-  --f-h2: 3rem/100% "Montserrat-SemiBold", sans-serif;
-  --f-h3: 2rem/100% "Montserrat-Regular", sans-serif;
-  --f-GT: 0.85rem/100% "Montserrat-Regular", sans-serif;
-  --f-h4: 0.85rem/100% "Montserrat-Bold", sans-serif;
-  --f-h5: 0.85rem/100% "Montserrat-Bold", sans-serif;
-  --f-nav: 1.2rem/100% "Montserrat-Bold", sans-serif;
-  --f-input: 1.2rem/100% "Montserrat-Bold", sans-serif;
+  --f-h1: 5.56rem/100% sans-serif;
+  --f-h2: 3rem/100% sans-serif;
+  --f-h3: 2rem/100% sans-serif;
+  --f-GT: 0.85rem/100% sans-serif;
+  --f-impressum: 0.75/100% sans-serif;
+  --f-nav: 1.2rem/100% sans-serif;
+  --f-input: 1.2rem/100% sans-serif;
 }
 
 body {
@@ -136,12 +135,15 @@ a {
   grid-template-rows: repeat(3, 0.6fr);
   grid-column-gap: var(--grid-gap);
   grid-row-gap: 0px;
+  grid-template-rows: auto clamp(220px, 25vw, 380px) auto;
 }
 
 .titel {
   grid-area: 1 / 1 / 2 / 12;
   justify-items: center;
   align-content: center;
+  padding-top: calc(var(--ga-large));
+  padding-bottom: calc(2 * var(--ga-medium));
 }
 
 .karte {
@@ -152,6 +154,7 @@ a {
 
 .auto {
   grid-area: 2 / 5 / 3 / 8;
+  padding-bottom: calc(2 * var(--ga-large));
   .card {
     display: flex;
     flex-direction: column;
@@ -203,6 +206,7 @@ a {
 .flagge {
   grid-area: 2 / 8 / 3 / 12;
   margin-right: var(--ga-large);
+  padding-bottom: calc(2 * var(--ga-large));
 
   .card {
     padding: 0;
@@ -226,6 +230,7 @@ a {
   grid-area: 3 / 1 / 4 / 6;
   width: calc(100% + var(--grid-gap));
   margin-left: var(--ga-large);
+  padding-bottom: calc(2 * var(--ga-large));
 
   .card {
     display: flex;
@@ -253,6 +258,7 @@ a {
   grid-area: 3 / 7 / 4 / 12;
   width: calc(var(--grid-gap) + 100%);
   margin-left: calc(var(--grid-gap) * -1);
+  padding-bottom: calc(2 * var(--ga-large));
 
   .card {
     margin-right: var(--ga-large);
@@ -280,8 +286,8 @@ a {
 
 .card {
   background-color: var(--Grün);
-  height: 316px;
   border-radius: 15px;
+  height: 100%;
   padding: var(--ga-medium);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
@@ -315,9 +321,39 @@ footer {
   }
 }
 
-#map {
-  height: 316px;
+.karte .card {
+  aspect-ratio: 3 / 2;
   width: 100%;
+  overflow: hidden;
+  padding: 0;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+.auto .card,
+.flagge .card,
+.karte .card {
+  height: 100%;
+}
+
+@media (max-width: 1280px) {
+  :root {
+    font-size: 19px;
+  }
+
+  .master {
+    display: grid;
+    /* max-width: 1512px; */
+    margin: 0 auto;
+    grid-template-columns: repeat(11, 1fr);
+    grid-template-rows: repeat(3, 0.6fr);
+    grid-column-gap: var(--grid-gap);
+    grid-row-gap: 0px;
+    grid-template-rows: auto clamp(220px, 25vw, 380px) auto;
+  }
 }
