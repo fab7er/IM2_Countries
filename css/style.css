@@ -357,3 +357,54 @@ footer {
     grid-template-rows: auto clamp(220px, 25vw, 380px) auto;
   }
 }
+
+
+
+ueber uns 
+
+.about-title {
+  grid-area: 1 / 1 / 2 / 12;
+
+  display: flex;
+  justify-content: center;
+  align-items: start;
+
+  padding-top: 1rem;
+}
+
+.about-title h1 {
+  font: var(--f-h2);
+}
+
+.about-text {
+  grid-area: 2 / 2 / 3 / 7;
+
+  line-height: 2rem;
+
+  margin-top: -2rem;
+}
+
+.about-text p {
+  margin-bottom: 2rem;
+}
+
+.about-image {
+  grid-area: 2 / 7 / 3 / 11;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  margin-top: -2rem;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 350px;
+
+  border-radius: 15px;
+
+  object-fit: cover;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
