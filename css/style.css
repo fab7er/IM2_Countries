@@ -408,3 +408,46 @@ ueber uns
 
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
+
+/* impressum */
+
+.impressum-page {
+  max-width: 1512px;
+
+  margin: 0 auto;
+
+  padding-top: 0.8rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-bottom: 1rem;
+}
+
+.impressum-page h1 {
+  text-align: center;
+
+  font: var(--f-h2);
+
+  margin-bottom: 1.5rem;
+}
+
+.impressum-content {
+  width: 100%;
+
+  line-height: 1.5rem;
+
+  color: #434646;
+
+  font: var(--f-impressum);
+}
+
+.impressum-content h4 {
+  margin-bottom: 0.5rem;
+}
+
+.impressum-content p {
+  margin-bottom: 1rem;
+}
+
+.impressum-content ul {
+  margin-left: 1.5rem;
+}
