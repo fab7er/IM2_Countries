@@ -1,4 +1,18 @@
-console.log("blub");
+console.group("🌍 Country Explorer");
+console.log("Version: 1.0");
+console.log("API verbunden");
+console.log("✈️ Reisepass erfolgreich validiert");
+console.groupEnd();
+
+function toTitleCase(text) {
+  if (!text) return "";
+
+  return text
+    .toLowerCase()
+    .split(" ")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
 
 const form = document.querySelector('.suchleiste');
 
@@ -8,14 +22,13 @@ form.addEventListener('submit', function (auslesen){
   const land = document.querySelector('.landSuche').value;
 
   if (land.length >=2) {
-    window.location.href = `/index.html?land=${encodeURIComponent(land)}`;
+    window.location.href = `/html/land.html?land=${encodeURIComponent(land)}`;
   }
 });
 
 
 const params = new URLSearchParams(window.location.search);
 const land = params.get("land");
-
 
 
 async function bestellen (bestell_url) {
@@ -30,8 +43,21 @@ async function bestellen (bestell_url) {
 let url = `https://restcountries.com/v3.1/name/${land}`;
 const bestellung = await bestellen(url);
 
+const master = document.querySelector(".master");
+
+if (!bestellung || bestellung.status === 404 || bestellung.length === 0) {
+  master.style.display = "none";
+
+  const errorBox = document.createElement("div");
+  errorBox.classList.add("error-box");
+  errorBox.textContent = "Kein Land gefunden. Bitte existierendes Land in Englisch eingeben.";
+
+  document.querySelector("main").appendChild(errorBox);
+  throw new Error("Country not found");
+}
+
 const country = bestellung[0];
-console.log(country);
+// console.log(country);
 
 const titel = document.querySelector(".titel h1");
 titel.textContent = country.translations.deu.common.toUpperCase();
@@ -53,10 +79,42 @@ const hauptstadt = document.querySelector("#hauptstadt")
 hauptstadt.textContent = country.capital;
 
 const einwohner = document.querySelector("#einwohner")
-einwohner.textContent = country.population;
+einwohner.textContent = new Intl.NumberFormat("de-CH").format(country.population);
 
-const zeitzone = document.querySelector("#zeitzone")
-zeitzone.textContent = country.timezones;
+const zeitzoneContainer = document.querySelector("#zeitzoneContainer");
+const infoCard = document.querySelector(".infos .card");
+
+if (country.timezones.length === 1) {
+
+  zeitzoneContainer.textContent = country.timezones[0];
+
+} else {
+
+  const details = document.createElement("details");
+
+  const summary = document.createElement("summary");
+  summary.textContent = `${country.timezones.length} Zeitzonen`;
+
+  const list = document.createElement("div");
+
+  country.timezones.forEach((timezone) => {
+
+    const p = document.createElement("p");
+    p.textContent = timezone;
+
+    list.appendChild(p);
+
+  });
+
+  details.appendChild(summary);
+  details.appendChild(list);
+
+  zeitzoneContainer.appendChild(details);
+
+  infoCard.classList.add("cardEnhance");
+
+}
+
 
 const kennzeichen = document.querySelector("#kennzeichen")
 kennzeichen.textContent = country.car.signs;
@@ -75,13 +133,20 @@ flaggeBild.src = country.flags.svg;
 flaggeBild.onload = function () {
 const verhaeltnis = flaggeBild.naturalWidth / flaggeBild.naturalHeight;
 if (verhaeltnis <= 1.4) {
-  console.log("zu gross");
+  // console.log("zu gross");
   flaggeBild.classList.add('quad');
 }
+if (verhaeltnis >= 1.4) {
+  // console.log("zu gross");
+  flaggeBild.classList.add('weit');
+}
 else {
-  console.log("passt")
+  // console.log("passt")
 }
 }
+
+const sprache = document.querySelector("#sprache")
+sprache.textContent = Object.values(country.languages).join(", ");
 
 const karte = document.querySelector(".karte #map")
 
@@ -109,7 +174,7 @@ const code = Object.keys(country.currencies)[0];
 const waehrung = country.currencies[code].name;
 
 const waehrungUmrechner = document.querySelector("#waehrungUmrechner");
-waehrungUmrechner.textContent = waehrung;
+waehrungUmrechner.textContent = toTitleCase(waehrung);
 
 const zielWaehrung = document.querySelector("b#zielWaehrung");
 zielWaehrung.textContent = code;

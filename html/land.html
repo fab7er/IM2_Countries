@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weltwissen</title>
+    <link rel="icon" type="image/png" href="/assets/LogoMarker.png" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  </head>
+  <body>
+    <nav id="nav-browser">
+      <a href="/index.html"><img src="/assets/Logo_Wortmarke.png" alt="" /></a>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/html/ueberuns.html">Über uns</a></li>
+        <li>
+          <form id="landSuche2" class="suchleiste">
+            <input
+              class="landSuche"
+              type="text"
+              placeholder="Land auf Englisch eingeben"
+            />
+            <button type="submit">Suchen</button>
+          </form>
+        </li>
+      </ul>
+    </nav>
+    <nav id="nav-mobile">
+      <a href="/index.html"><img src="/assets/Logo_Wortmarke.png" alt="" /></a>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/html/ueberuns.html">Über uns</a></li>
+        <li>
+          <button><a href="/index.html">Suchen</a></button>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <div class="master">
+        <div class="titel">
+          <h1></h1>
+        </div>
+
+        <div class="karte">
+          <div class="card-titel"><h3>Karte</h3></div>
+          <div class="card"><div id="map"></div></div>
+        </div>
+        <div class="auto">
+          <div class="card-titel"><h3>Auto</h3></div>
+          <div class="card">
+            <img src="/assets/Auto-Strasse.svg" alt="" />
+            <lottie-player src="/assets/Flow 1.json" loop autoplay>
+            </lottie-player>
+            <p><b>Verkehr</b></p>
+          </div>
+        </div>
+        <div class="flagge">
+          <div class="card-titel"><h3>Flagge</h3></div>
+          <div class="card"><img src="" alt="" /></div>
+        </div>
+
+        <div class="währung">
+          <div class="card-titel"><h3>Währung</h3></div>
+          <div class="card">
+            <p>1 Schweizer Franken entspricht</p>
+            <br />
+            <h2 id="umrechnung"></h2>
+            <h2 id="waehrungUmrechner"></h2>
+            <div class="spacer"></div>
+            <div class="feld">
+              <input id="chf" class="input-währung" type="number" name="usd" />
+              <label class="label" for="usd"><b>CHF</b></label>
+            </div>
+            <div class="feld">
+              <input
+                id="fremdWaehrung"
+                class="input-währung"
+                type="number"
+                name="brl"
+              />
+              <label class="label" for="brl"><b id="zielWaehrung"></b></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="infos">
+          <div class="card-titel"><h3>Infos</h3></div>
+          <div class="card">
+            <ul>
+              <li>
+                <p><b>Name:</b></p>
+                <p id="name"></p>
+              </li>
+              <li>
+                <p><b>Hauptstadt:</b></p>
+                <p id="hauptstadt"></p>
+              </li>
+              <li>
+                <p><b>Einwohner:</b></p>
+                <p id="einwohner"></p>
+              </li>
+              <li>
+                <p><b>Zeitzone:</b></p>
+                <div id="zeitzoneContainer"></div>
+              </li>
+              <li>
+                <p><b>Kennzeichen:</b></p>
+                <p id="kennzeichen"></p>
+              </li>
+              <li>
+                <p><b>Unabhängigkeit:</b></p>
+                <p id="unabhängigkeit"></p>
+              </li>
+              <li>
+                <p><b>Sprache:</b></p>
+                <p id="sprache"></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <a href="/html/impressum.html" class="Such-Button">Impressum </a>
+      <ul>
+        <li><img src="/assets/Instagram-Logo.png" alt="" /></li>
+        <li><img src="/assets/LinkedIn-Logo.png" alt="" /></li>
+        <li><img src="/assets/EMail-Logo.png" alt="" /></li>
+      </ul>
+    </footer>
+    <script src="/js/script.js" type="module"></script>
+  </body>
+</html>

@@ -55,7 +55,7 @@ main {
   display: flex;
   flex-direction: row;
   background-color: var(--weiss);
-  border-radius: 15px;
+  border-radius: 0.75rem;
   align-items: center;
   margin-top: var(--ga-large);
   padding: var(small);
@@ -72,6 +72,10 @@ main {
   font-size: var(--f-input);
   padding-left: var(--ga-small);
   padding-right: var(--ga-small);
+}
+
+.landSuche::placeholder {
+  font-size: 1rem;
 }
 
 button {
@@ -122,9 +126,26 @@ nav {
   }
 }
 
+#nav-mobile {
+  display: none;
+}
+
 a {
   text-decoration: none;
   color: var(--weiss);
+}
+main {
+  margin-left: var(--ga-large);
+  margin-right: var(--ga-large);
+}
+
+#home {
+  margin: 0;
+}
+
+.master-home {
+  justify-items: center;
+  margin: var(--ga-large);
 }
 
 .master {
@@ -135,21 +156,20 @@ a {
   grid-template-rows: repeat(3, 0.6fr);
   grid-column-gap: var(--grid-gap);
   grid-row-gap: 0px;
-  grid-template-rows: auto clamp(220px, 25vw, 380px) auto;
+  grid-template-rows: auto auto auto;
 }
 
 .titel {
   grid-area: 1 / 1 / 2 / 12;
   justify-items: center;
   align-content: center;
-  padding-top: calc(var(--ga-large));
+  padding-top: var(--ga-large);
   padding-bottom: calc(2 * var(--ga-medium));
 }
 
 .karte {
   grid-area: 2 / 1 / 3 / 5;
   padding-bottom: calc(2 * var(--ga-large));
-  margin-left: var(--ga-large);
 }
 
 .auto {
@@ -163,6 +183,7 @@ a {
     padding: 0;
     overflow: hidden;
     position: relative;
+    aspect-ratio: 2.2 / 2;
 
     img {
       width: auto;
@@ -195,7 +216,7 @@ a {
       color: var(--weiss);
       width: 100%;
       padding: var(--ga-small);
-      border-radius: 0 0 15px 15px;
+      border-radius: 0 0 0.75rem 0.75rem;
       text-align: center;
       position: absolute;
       z-index: 3;
@@ -205,7 +226,6 @@ a {
 
 .flagge {
   grid-area: 2 / 8 / 3 / 12;
-  margin-right: var(--ga-large);
   padding-bottom: calc(2 * var(--ga-large));
 
   .card {
@@ -213,15 +233,20 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    aspect-ratio: 3 / 2;
+
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
-      border-radius: 15px;
+      border-radius: 0.75rem;
     }
     .quad {
       width: auto;
+    }
+    .weit {
+      object-fit: contain;
     }
   }
 }
@@ -229,17 +254,17 @@ a {
 .währung {
   grid-area: 3 / 1 / 4 / 6;
   width: calc(100% + var(--grid-gap));
-  margin-left: var(--ga-large);
   padding-bottom: calc(2 * var(--ga-large));
 
   .card {
     display: flex;
     flex-direction: column;
+    min-height: 90%;
   }
 
   .input-währung {
     border: none;
-    width: 12rem;
+    width: 14rem;
     height: 2.2rem;
     border-radius: 0.25rem;
     margin-bottom: var(--ga-medium);
@@ -250,7 +275,7 @@ a {
   }
 
   .spacer {
-    flex: 1;
+    height: var(--ga-large);
   }
 }
 
@@ -261,7 +286,7 @@ a {
   padding-bottom: calc(2 * var(--ga-large));
 
   .card {
-    margin-right: var(--ga-large);
+    min-height: 90%;
   }
 
   ul {
@@ -286,10 +311,13 @@ a {
 
 .card {
   background-color: var(--Grün);
-  border-radius: 15px;
-  height: 100%;
+  border-radius: 0.75rem;
   padding: var(--ga-medium);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.cardEnhance {
+  height: auto;
 }
 
 footer {
@@ -307,7 +335,12 @@ footer {
 
   ul {
     display: flex;
-    flex-direction: row;
+    gap: 0.75rem;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    margin-right: var(--ga-large);
+    margin-left: var(--ga-large);
 
     li {
       display: flex;
@@ -315,8 +348,8 @@ footer {
       gap: var(--ga-large);
       color: var(--weiss);
       list-style: none;
-      margin: var(--ga-small) var(--ga-large);
-      height: 56px;
+      margin: 0;
+      height: 2.8rem;
     }
   }
 }
@@ -326,8 +359,8 @@ footer {
   width: 100%;
   overflow: hidden;
   padding: 0;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 0.75rem rgba(0, 0, 0, 0.25);
 }
 
 #map {
@@ -335,117 +368,240 @@ footer {
   width: 100%;
 }
 
-.auto .card,
-.flagge .card,
-.karte .card {
-  height: 100%;
+.error-box {
+  background: #ff5858;
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  margin: 2rem auto;
+  max-width: 600px;
 }
 
 @media (max-width: 1280px) {
   :root {
-    font-size: 19px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1120px) {
+  #nav-mobile {
+    display: flex;
+  }
+
+  main {
+    margin-bottom: var(--ga-medium);
+  }
+
+  .karte {
+    order: 2;
+  }
+  .flagge {
+    order: 1;
+  }
+  .infos {
+    order: 3;
+  }
+  .auto {
+    order: 4;
+  }
+  .währung {
+    order: 5;
+  }
+
+  .währung .card,
+  .infos .card {
+    height: auto;
+  }
+
+  #nav-browser {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 16px;
   }
 
   .master {
-    display: grid;
-    /* max-width: 1512px; */
-    margin: 0 auto;
-    grid-template-columns: repeat(11, 1fr);
-    grid-template-rows: repeat(3, 0.6fr);
-    grid-column-gap: var(--grid-gap);
-    grid-row-gap: 0px;
-    grid-template-rows: auto clamp(220px, 25vw, 380px) auto;
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+  }
+
+  .master-home h1,
+  .master-home h2 {
+    text-align: center;
+  }
+
+  .infos ul li p {
+    width: 13rem;
+  }
+
+  nav {
+    img {
+      width: 3.125rem;
+      height: 3.34rem;
+      object-fit: cover;
+      object-position: left;
+    }
+  }
+
+  .karte .card,
+  .auto .card,
+  .flagge .card {
+    aspect-ratio: 3/2;
+  }
+
+  .währung {
+    width: 100%;
+  }
+
+  .infos {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  footer {
+    ul {
+      li {
+        height: 2.8rem;
+      }
+    }
   }
 }
 
+@media (max-width: 540px) {
+  .master {
+    font-size: 15px;
+  }
 
-
-ueber uns 
-
-.about-title {
-  grid-area: 1 / 1 / 2 / 12;
-
-  display: flex;
-  justify-content: center;
-  align-items: start;
-
-  padding-top: 1rem;
+  .infos ul li p {
+    width: 8.5rem;
+  }
 }
 
-.about-title h1 {
-  font: var(--f-h2);
+@media (max-width: 480px) {
+  :root {
+    font-size: 15px;
+  }
+
+  .logo-index {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-index img {
+    width: min(70vw, 260px);
+    height: auto;
+    max-width: 100%;
+  }
+
+  form {
+    width: auto;
+  }
+
+  footer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ga-small);
+    text-align: center;
+  }
+
+  footer a {
+    margin: var(--ga-small) 0;
+  }
+
+  footer ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap; /* oder wrap wenn es zu eng wird */
+    gap: 0.75rem;
+  }
+
+  footer ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  footer ul li img {
+    width: 2rem;
+    height: auto;
+  }
 }
+
+@media (max-width: 390px) {
+  :root {
+    font-size: 14px;
+  }
+
+  .logo-index img {
+    width: 65vw;
+    max-width: 220px;
+  }
+
+  footer ul li {
+    height: 2rem;
+  }
+}
+
+/* ueber uns  */
 
 .about-text {
-  grid-area: 2 / 2 / 3 / 7;
-
-  line-height: 2rem;
-
-  margin-top: -2rem;
-}
-
-.about-text p {
-  margin-bottom: 2rem;
+  grid-area: 2 / 1 / 3 / 8;
+  p {
+    line-height: 1.3;
+  }
 }
 
 .about-image {
-  grid-area: 2 / 7 / 3 / 11;
+  grid-area: 2 / 8 / 3 / 12;
 
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-
-  margin-top: -2rem;
-}
-
-.about-image img {
-  width: 100%;
-  max-width: 350px;
-
-  border-radius: 15px;
-
-  object-fit: cover;
-
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  }
 }
 
 /* impressum */
 
 .impressum-page {
+  p {
+    line-height: 1.3;
+  }
   max-width: 1512px;
-
+  font-style: var(--f-impressum);
   margin: 0 auto;
 
-  padding-top: 0.8rem;
-  padding-left: 5rem;
-  padding-right: 5rem;
-  padding-bottom: 1rem;
+  padding-top: var(--ga-medium);
+  padding-left: calc(var(--ga-large) * 3);
+  padding-right: calc(var(--ga-large) * 3);
+  padding-bottom: var(--ga-large);
 }
 
 .impressum-page h1 {
   text-align: center;
-
-  font: var(--f-h2);
-
   margin-bottom: 1.5rem;
 }
 
 .impressum-content {
-  width: 100%;
-
-  line-height: 1.5rem;
-
-  color: #434646;
-
   font: var(--f-impressum);
-}
-
-.impressum-content h4 {
-  margin-bottom: 0.5rem;
-}
-
-.impressum-content p {
-  margin-bottom: 1rem;
 }
 
 .impressum-content ul {
