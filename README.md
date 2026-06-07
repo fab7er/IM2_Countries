@@ -1,15 +1,13 @@
-# Projektname
+# Weltwissen
 
-Kurze Beschreibung der Website (1–3 Sätze):  
-Worum geht es? Was ist das Ziel? Für wen ist die Website gedacht?
+Weltwissen ist eine Webseite für alle, die schnell und gezielt die wichtigsten Informationen über ein Land erfahren möchten. Durch die Suchleiste kann man jedes belibige Land suchen und wird auf eine zweite Seite gelangen, um dort Flagge, Karte, Infos und mehr darüber zu erfahren.
 
 ---
 
 ## 👥 Team & Rollen
 
-- Name 1 – Aufgabe (z. B. Design, HTML/CSS)
-- Name 2 – Aufgabe (z. B. JavaScript, API)
-- Name 3 – Aufgabe (z. B. Inhalte, Layout, Testing)
+- Antoine Metry – CSS
+- Fabrice Erni – HTML & JavaScript
 
 ---
 
@@ -18,8 +16,7 @@ Worum geht es? Was ist das Ziel? Für wen ist die Website gedacht?
 - HTML5
 - CSS3
 - JavaScript
-- (Optional: API / Framework / Libraries)
-- (Optional: Tools wie Figma, Git, VS Code)
+- Figma, GitHub, VS Code
 
 ---
 
@@ -36,18 +33,16 @@ So kann das Projekt gestartet werden:
 
 ## ⚙️ Funktionen der Website
 
-- Funktion 1 (z. B. Ländersuche mit API)
-- Funktion 2 (z. B. Filterfunktion)
-- Funktion 3 (z. B. Animationen)
-- Funktion 4 (z. B. Formular / Eingaben)
+- Funktion 1: Länder suchen mit der API
+- Funktion 2: Infos anschauen
+- Funktion 3: Currency Exchange von CHF zu Ziel-Währung
 
 ---
 
 ## 🐛 Bekannte Probleme
 
-- Problem 1
-- Problem 2
-- Dinge, die noch nicht optimal funktionieren
+- Das 0 beim Currency-Exchange kann gelöscht werden. Funktionalität ist aber gewährleistet.
+- Suche ist nur auf Englisch möglich
 
 ---
 
@@ -55,28 +50,25 @@ So kann das Projekt gestartet werden:
 
 Was haben wir gelernt?
 
-- Learning 1
-- Learning 2
-- Herausforderungen während der Umsetzung
+- API-Daten mit JS einbinden
+- Die Länder Infos waren zuerst auf der index Seite. Diese Seite mussten wir dann wechseln und alle Links erneut verknüpfen.
+- Die Umleitung per Suchfeld auf die jeweilige Länderseite war eine Challenge.
+- Es gibt verschiedene Formate von Flaggen, diese wollten wir jeweils im richtigen Format abbilden. Zuerst haben wir einfach auf 3/2 skaliert.
 
 ---
 
 ## 🌐 Quellen & Credits
 
-- Bilder: ...
-- Datenquellen / APIs: ...
-- Fonts: ...
-- Tutorials / Hilfen: ...
+- Bilder: Eigene Aufnahme, REST Countries API
+- REST Countries API (https://restcountries.com/?ref=freepublicapis.com)
+- UniRate API (https://unirateapi.com/apidocs/)
 
 ---
 
 ## 📌 Hinweise
 
-Zusätzliche Informationen, z. B.:
-
-- Kompatibilität (Browser)
-- Mobile Version vorhanden?
-- Weitere Infos
+- Mobile-Version vorhanden
+- Social-Media Icons sind nicht funktionsfähig, wir haben noch keine Kanäle (sie sollen aber bereits visualisieren, wie das aussehen würde).
 
 ---
 
