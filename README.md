@@ -55,6 +55,15 @@ Was haben wir gelernt?
 - Die Umleitung per Suchfeld auf die jeweilige Länderseite war eine Challenge.
 - Es gibt verschiedene Formate von Flaggen, diese wollten wir jeweils im richtigen Format abbilden. Zuerst haben wir einfach auf 3/2 skaliert.
 
+  20.06.2026:
+  Die API wurde auf eine neue Version geupdatet. Per Zufall konnten wir das nach der Abgabe feststellen. Geändert wurde nun:
+
+- Update von Version 3 auf Version 5
+- Neu mit API-Key (Die REST Countries API basiert neu auf einem Abo-Modell. Unsere kostenlose Version beinhaltet 500 monatliche Anfragen)
+- Diverse Neu-Verknüpfungen und Anpassungen, die aufgrund der neuen Struktur der Version 5 notwendig waren
+
+Fehler: Auf der Index-Seite steht jetzt ein Fehler, da es das HTML-Element "master" nicht gibt. Diese Funktion wird aber für die Hauptseite gebraucht.
+
 ---
 
 ## 🌐 Quellen & Credits

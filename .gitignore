@@ -3,4 +3,5 @@ config.php
 .vscode
 .env
 node_modules
-Ich war hier als test
+script_alt.js
+script_neu.js

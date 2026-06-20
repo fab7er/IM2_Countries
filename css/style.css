@@ -58,7 +58,6 @@ main {
   border-radius: 0.75rem;
   align-items: center;
   margin-top: var(--ga-large);
-  padding: var(small);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
   margin-bottom: var(--ga-large);
 }

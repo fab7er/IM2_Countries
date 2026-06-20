@@ -30,41 +30,53 @@ form.addEventListener('submit', function (auslesen){
 const params = new URLSearchParams(window.location.search);
 const land = params.get("land");
 
+let bestellung;
+if (land) {
+  const url = `https://api.restcountries.com/countries/v5?q=${land}`;
+  bestellung = await bestellen(url);
+}
+
 
 async function bestellen (bestell_url) {
  try {
- const bestellung = await fetch(bestell_url);
+ const bestellung = await fetch(bestell_url, 
+  { headers: { 'Authorization': 'Bearer rc_live_c33a9b117a494e89b8c19cc10f2a58bf' } }
+);
  return await bestellung.json();
  } catch (e) {
  console.error(e);
  return [];
  }
 }
-let url = `https://restcountries.com/v3.1/name/${land}`;
-const bestellung = await bestellen(url);
 
-const master = document.querySelector(".master");
+// const bestellung = await bestellen(url);
+// console.log(bestellung);
+// const master = document.querySelector(".master");
 
-if (!bestellung || bestellung.status === 404 || bestellung.length === 0) {
+const country = bestellung?.data?.objects?.[0];
+
+if (!country) {
+  const master = document.querySelector(".master");
   master.style.display = "none";
 
   const errorBox = document.createElement("div");
   errorBox.classList.add("error-box");
-  errorBox.textContent = "Kein Land gefunden. Bitte existierendes Land in Englisch eingeben.";
+  errorBox.textContent =
+    "Kein Land gefunden. Bitte existierendes Land eingeben.";
 
   document.querySelector("main").appendChild(errorBox);
+
   throw new Error("Country not found");
 }
 
-const country = bestellung[0];
 // console.log(country);
 
 const titel = document.querySelector(".titel h1");
-titel.textContent = country.translations.deu.common.toUpperCase();
+titel.textContent = country.names.translations.deu.common.toUpperCase();
 
 const fahrseite = document.querySelector(".auto p")
 const animation = document.querySelector(".auto lottie-player")
-fahrseite.textContent = country.car.side;
+fahrseite.textContent = country.cars.driving_side;
 if (fahrseite.textContent === "right") {
  fahrseite.textContent = "Rechtsverkehr";
 } else {
@@ -73,10 +85,10 @@ if (fahrseite.textContent === "right") {
 }
 
 const name = document.querySelector("#name")
-name.textContent = country.translations.deu.common;
+name.textContent = country.names.translations.deu.common;
 
 const hauptstadt = document.querySelector("#hauptstadt")
-hauptstadt.textContent = country.capital;
+hauptstadt.textContent = country.capitals[0].name;
 
 const einwohner = document.querySelector("#einwohner")
 einwohner.textContent = new Intl.NumberFormat("de-CH").format(country.population);
@@ -117,18 +129,13 @@ if (country.timezones.length === 1) {
 
 
 const kennzeichen = document.querySelector("#kennzeichen")
-kennzeichen.textContent = country.car.signs;
+kennzeichen.textContent = country.cars.signs;
 
 const unabhängigkeit = document.querySelector("#unabhängigkeit")
-unabhängigkeit.textContent = country.independent;
-if (unabhängigkeit.textContent === "true") {
- unabhängigkeit.textContent = "Ja";
-} else {
- unabhängigkeit.textContent = "Nein";
-}
+unabhängigkeit.textContent = country.continents.join(", ");
 
 const flaggeBild = document.querySelector(".flagge .card img")
-flaggeBild.src = country.flags.svg;
+flaggeBild.src = country.flag.url_svg;
 
 flaggeBild.onload = function () {
 const verhaeltnis = flaggeBild.naturalWidth / flaggeBild.naturalHeight;
@@ -146,12 +153,14 @@ else {
 }
 
 const sprache = document.querySelector("#sprache")
-sprache.textContent = Object.values(country.languages).join(", ");
+sprache.textContent = country.languages
+  .map(lang => toTitleCase(lang.name))
+  .join(", ");
 
 const karte = document.querySelector(".karte #map")
 
-    const lat = country.latlng[0];
-    const lng = country.latlng[1];
+    const lat = country.coordinates.lat;
+    const lng = country.coordinates.lng;
 
     // Karte erstellen
     const map = L.map("map").setView([lat, lng], 5);
@@ -170,8 +179,8 @@ const karte = document.querySelector(".karte #map")
 
 
 
-const code = Object.keys(country.currencies)[0];
-const waehrung = country.currencies[code].name;
+const code = country.currencies[0].code;
+const waehrung = country.currencies[0].name;
 
 const waehrungUmrechner = document.querySelector("#waehrungUmrechner");
 waehrungUmrechner.textContent = toTitleCase(waehrung);
@@ -220,5 +229,4 @@ function updateFromFremd() {
 
 chf.addEventListener("input", updateFromCHF);
 fremdWaehrung.addEventListener("input", updateFromFremd);
-
 
